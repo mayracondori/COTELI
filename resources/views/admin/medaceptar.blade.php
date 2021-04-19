@@ -58,7 +58,7 @@ use App\Models\Solicitud;
 
             <?php
                 $fotito=$rest2 ['foto_med'];
-                $utd="http://localhost/cotel/public/storage/".$fotito;
+                $utd="http://localhost/COTELI/public/storage/".$fotito;
                     ?>
 
 
