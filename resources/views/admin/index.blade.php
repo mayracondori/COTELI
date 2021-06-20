@@ -10,7 +10,8 @@
 <a href="admin/reporte"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Reportes por Gerencia</button> </a>
 <a href="admin/listas"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Actuales personas con permiso</button> </a>
 <a href="admin/feriados"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Feriados</button> </a>
-<a href="admin/anticipacion"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>anticipacion de solicitudes </button> </a>
+<a href="admin/anticipacion"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Anticipacion de solicitudes </button> </a>
+<a href="admin/evaluaciones"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Evaluaciones </button> </a>
 
 
 <div class="container mx-auto">
@@ -56,6 +57,7 @@
                     </svg>
                 </div>
             </a>
+            
         </div>
 
     </section>

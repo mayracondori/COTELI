@@ -50,6 +50,11 @@ $codigo= session('codigo_usu');
                   MIS CERTIFICADOS 
                 </button>
             </a>
+            <a href="usuario/calendario">
+                <button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
+                  MI CALENDARIO
+                </button>
+            </a>
         </div>
     </div>
 <div class="container mx-auto">

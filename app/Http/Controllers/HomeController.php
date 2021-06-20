@@ -149,7 +149,7 @@ public function login(Request $req )
 date_default_timezone_set("America/La_Paz");
 $desde = 00; # Desde las ocho de la mañana
 $hasta = 24; # Hasta las 18
-$lunes = 1; $martes =2; $miercoles =3; $jueves =4; $viernes = 5;
+$lunes = 1; $martes =2; $miercoles =3; $jueves =0; $viernes = 6;
 $dia_actual = intval(date("w"));
 $hora_actual = intval(date("H"));
 if ($hora_actual >= $desde && $hora_actual < $hasta) {

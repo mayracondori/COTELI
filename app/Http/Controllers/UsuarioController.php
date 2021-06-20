@@ -13,6 +13,11 @@ use QrCode;
 use Illuminate\Support\Facades\DB;
 class UsuarioController extends Controller
 {
+           
+    public function calendario(){
+        // metodo mostrar algo especifico
+        return view('usuario.calendario');
+        }
     public function micertificadoT()
 {
     $data = [

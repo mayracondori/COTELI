@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\usuario;
 use App\Models\feriado;
+use App\Models\tiporespuesta;
 use Illuminate\Http\Request;
 use App\Models\Solicitud;
 use App\Models\departamento;
@@ -20,6 +21,16 @@ class AdminController extends Controller
     public function formulario(){
         // metodo mostrar un elemento
         return view('admin.formulario');
+
+    }
+    public function nuevotiporesp(){
+        // metodo mostrar un elemento
+        return view('admin.nuevotiporesp');
+
+    }
+    public function evaluaciones(){
+        // metodo mostrar un elemento
+        return view('admin.evaluaciones');
 
     }
     public function formapro(){
@@ -98,6 +109,12 @@ class AdminController extends Controller
     public function repo(){
         // metodo mostrar algo especifico
         return view('admin.repo');
+
+
+    }
+    public function maps(){
+        // metodo mostrar algo especifico
+        return view('admin.maps');
 
 
     }
@@ -225,6 +242,20 @@ class AdminController extends Controller
 
 
     }
+    public function crearnuevotipores(Request $request)
+    {
+       
+
+        $tr = new tiporespuesta;
+        $tr->Estado_tipores=1;
+        $tr->Nom_tipores=$request->Nom_tipores;
+                       
+        $tr->save();
+        return redirect()->route('evaluaciones');
+
+
+    }
+      
             public function enviarcontabilidad(Request $request)
             {
                

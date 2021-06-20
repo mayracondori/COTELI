@@ -78,6 +78,7 @@ Route::get('usuario/create', [UsuarioController::class, 'create']);
     Route::get('usuario/poraprobar', [UsuarioController::class, 'poraprobar']);
     Route::get('usuario/formaceptar2', [UsuarioController::class, 'formaceptar2']);
     Route::POST('usuario/aceptarsolicitud', [Usuariocontroller::class, 'aceptarsolicitud']);
+    Route::get('usuario/calendario', [UsuarioController::class, 'calendario']);
 
     Route::get('usuario/miscertificados', [UsuarioController::class, 'miscertificados']);
 
@@ -97,6 +98,10 @@ Route::get('usuario/create', [UsuarioController::class, 'create']);
     Route::get('admin/medico', [AdminController::class, 'medico']);
     Route::get('admin/reportes', [AdminController::class, 'reportes']);
     Route::get('admin/repo', [AdminController::class, 'repo']);
+    Route::get('admin/maps', [AdminController::class, 'maps']);
+    
+Route::get('admin/evaluaciones', [AdminController::class,'evaluaciones'])->name('evaluaciones');
+
     /////
     Route::get('admin/formapro', [AdminController::class, 'formapro']);
     Route::get('admin/formrepro', [AdminController::class, 'formrepro']);
@@ -137,6 +142,8 @@ Route::get('admin/crearcertificado', [AdminController::class, 'crearcertificado'
     Route::get('admin/contabilidad', [AdminController::class, 'contabilidad'])->name('admin.contabilidad');
     Route::POST('admin/enviarcertificado', [AdminController::class, 'enviarcertificado']);
     Route::POST('admin/enviarcontabilidad', [AdminController::class, 'enviarcontabilidad']);
+    Route::get('admin/nuevotiporesp', [AdminController::class, 'nuevotiporesp'])->name('admin.nuevotiporesp');
+    Route::POST('admin/crearnuevotipores', [AdminController::class, 'crearnuevotipores'])->name('crearnuevotipores');
     
     Route::get('admin/trabajo', [AdminController::class, 'trabajo'])->name('admin.trabajo');
 
