@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','usuario')
 
 @section('content')
@@ -17,61 +17,82 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
 @csrf
       <div class="bg-yellow-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
        <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">FORMULARIO BAJA MEDICA</label>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
+        <table>
+      <tr><td>
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
-
-          <script name="fechasolicitud">
-
-              var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-              var f=new Date();
-              document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-          </script></label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
-
-        <?php  $codigo = "select * from usuario where codigo_usu=$codigo";
-        $resultado = mysqli_query($coneccion, $codigo);
-        while ($rest = mysqli_fetch_array($resultado)) {
-            ?>
-
-
-        <input type="text" name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
-        <input type="hidden" name="id" value="<?php echo $rest ['id']; ?>">
-
-    </label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
-            <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
-        </label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
-            <input type="text"  name="gerencia" value="<?php
-                $id=$rest['id'];
-                 $consulta="SELECT g.nom_gerencia from usuario as u, gerencia as g where u.id = '$id'and g.id_gerencia =u.id_gerencia";
-                 $gerencia = mysqli_query($coneccion, $consulta);
-                 while($rest2 = mysqli_fetch_array($gerencia))
-                 {
-                 echo $rest2['nom_gerencia'] ;
-                 }
-                 ?>"
-
-                 >
-                </label>
-
-
-            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:
-            <input type="text"name="departamento" value="<?php
-            $id=$rest['id'];
-             $consulta="SELECT d.nom_depto FROM usuario as u, departamento as d where u.id= '$id'and d.id_departamento =u.id_departamento";
-             $gerencia = mysqli_query($coneccion, $consulta);
-             while($rest2 = mysqli_fetch_array($gerencia))
-             {
-             echo $rest2['nom_depto'] ;
-             }
-             ?>"
-
-             >
-        </label>
-        <?php
-    }
-    ?>
+         
+         </td>
+         
+         <td>
+            <script name="fecha_solicitud">
+                 var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                 var f=new Date();
+                 document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+             </script></label></td>
+          </tr>
+          <tr>
+          <td>
+           <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
+               <?php  $codigo = "select * from usuario where codigo_usu=$codigo";
+               $resultado = mysqli_query($coneccion, $codigo);
+               while ($rest = mysqli_fetch_array($resultado)) {
+                   ?>
+   
+   </td>
+   <td>
+               <input type="text"  name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
+               <input type="hidden" name="id" value="<?php echo $rest ['id']; ?>">
+               </td>
+           </label>
+           </tr>
+           <tr>
+           <td>
+           <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
+             </td>
+             <td>
+                 <input type="text" style="width : 200px;" name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
+                 </td></label>
+          </tr>
+          <tr>
+          <td>
+           <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
+             </td>
+             <td>  <input type=»text» name="gerencia" value="<?php
+               $id=$rest['id'];
+                $consulta="SELECT g.nom_gerencia from usuario as u, gerencia as g where u.id= '$id'and g.id_gerencia =u.id_gerencia";
+                $gerencia = mysqli_query($coneccion, $consulta);
+                while($rest2 = mysqli_fetch_array($gerencia))
+                {
+                echo $rest2['nom_gerencia'] ;
+                }
+                ?>"
+   
+                >
+           </label></td>  
+   </tr><tr>
+   <td>
+               <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:
+                 </td>      
+                 <td>  <input type="text"  name="departamento" value="<?php
+   
+                   $id=$rest['id'];
+                    $consulta="SELECT d.nom_depto FROM usuario as u, departamento as d where u.id= '$id'and d.id_departamento =u.id_departamento";
+                    $gerencia = mysqli_query($coneccion, $consulta);
+                    while($rest2 = mysqli_fetch_array($gerencia))
+                    {
+                    echo $rest2['nom_depto'] ;
+                    }
+                    ?>"
+   
+                    >
+   
+               </label>
+               </td> 
+               </table>
+               <?php
+           }
+           ?>
  <div class="text-center">
             <span class="text-red-500 text-xs italic">
               TODAS LAS SOLICITUDES DE BAJA MEDICA DEBEN TENER UN DOCUMENTO DE RESPALDO

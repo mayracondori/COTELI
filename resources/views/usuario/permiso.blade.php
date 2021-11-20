@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','usuario')
 
 @section('content')
@@ -33,29 +33,48 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
              ?>
             </span>
           </div>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
-          <script name="fecha_solicitud">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
+      <table>
+      <tr><td>
+      <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
+         
+      </td>
+      
+      <td>
+         <script name="fecha_solicitud">
               var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
               var f=new Date();
               document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-          </script></label>
+          </script></label></td>
+       </tr>
+       <tr>
+       <td>
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
             <?php  $codigo = "select * from usuario where codigo_usu=$codigo";
             $resultado = mysqli_query($coneccion, $codigo);
             while ($rest = mysqli_fetch_array($resultado)) {
                 ?>
 
-
+</td>
+<td>
             <input type="text"  name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
             <input type="hidden" name="id" value="<?php echo $rest ['id']; ?>">
-
+            </td>
         </label>
+        </tr>
+        <tr>
+        <td>
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
-            <input type="text" style="width : 200px;" name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
-        </label>
+          </td>
+          <td>
+              <input type="text" style="width : 200px;" name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
+              </td></label>
+       </tr>
+       <tr>
+       <td>
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
-            <input type=»text» name="gerencia" value="<?php
+          </td>
+          <td>  <input type=»text» name="gerencia" value="<?php
             $id=$rest['id'];
              $consulta="SELECT g.nom_gerencia from usuario as u, gerencia as g where u.id= '$id'and g.id_gerencia =u.id_gerencia";
              $gerencia = mysqli_query($coneccion, $consulta);
@@ -66,10 +85,13 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
              ?>"
 
              >
-        </label>
-
+        </label></td>  
+</tr><tr>
+<td>
             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:
-                <input type="text"  name="departamento" value="<?php
+              </td>      
+              <td>  <input type="text"  name="departamento" value="<?php
+
                 $id=$rest['id'];
                  $consulta="SELECT d.nom_depto FROM usuario as u, departamento as d where u.id= '$id'and d.id_departamento =u.id_departamento";
                  $gerencia = mysqli_query($coneccion, $consulta);
@@ -82,7 +104,8 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
                  >
 
             </label>
-
+            </td> 
+            </table>
             <?php
         }
         ?>
@@ -133,8 +156,6 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
             </div>
         </div>
 
-
-
           <div id="div1"  style="display:none">
             <div class="-mx-3 md:flex mb-6">
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
@@ -149,64 +170,14 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
                 </div>
             </div>
           </div>
-          <div id="div2"  style="display:none">holas 2 
-          <div class="-mx-3 md:flex mb-6">
-                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="from">HORA INICIO</label>
-                  <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"  type="time" id="horainicio" name="horainicio"/>
-
-                </div>
-                <div class="md:w-1/2 px-3">
-                  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="from">HORA FIN</label>
-                  <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"  type="time" id="horafin" name="horafin"/>
-
-                </div>
-            </div>
-          
-          </div>
-
-        
-
-          <div id="div3"  style="display:none">holas 3</div>
-          <div id="div4"  style="display:none">holas 4</div>
-
-
-
-          <div id="div5"  style="display:none">holas 5
-          
-          <div class="-mx-3 md:flex mb-6">
-                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="from">HORA INICIO</label>
-                  <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"  type="time" id="horainicio" name="horainicio"/>
-
-                </div>
-                <div class="md:w-1/2 px-3">
-                  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="from">HORA FIN</label>
-                  <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"  type="time" id="horafin" name="horafin"/>
-
-                </div>
-            </div>
-
-          </div>
-          <div id="div6"  style="display:none">holas 6
-          
-          <div class="-mx-3 md:flex mb-6">
-                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="from">HORA INICIO</label>
-                  <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"  type="time" id="horainicio" name="horainicio"/>
-
-                </div>
-                <div class="md:w-1/2 px-3">
-                  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="from">HORA FIN</label>
-                  <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"  type="time" id="horafin" name="horafin"/>
-
-                </div>
-            </div>
-
-          </div>
-          <div id="div7"  style="display:none">holas 7</div>
-          <div id="div8"  style="display:none">holas 8</div>
-          <div id="div9"  style="display:none">holas 9</div>
+          <div id="div2"  style="display:none"></div>
+          <div id="div3"  style="display:none"></div>
+          <div id="div4"  style="display:none"></div>
+          <div id="div5"  style="display:none"></div>
+          <div id="div6"  style="display:none"></div>
+          <div id="div7"  style="display:none"></div>
+          <div id="div8"  style="display:none"></div>
+          <div id="div9"  style="display:none"></div>
           <div id="div10"  style="display:none">
           <span class="text-red-500 text-xs italic">
               TODAS LAS SOLICITUDES DE CONSULTA MEDICA DEBEN TENER UN DOCUMENTO DE RESPALDO
@@ -217,7 +188,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
           <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="company">
             DOCUMENTO DE RESPALDO</label>
 
-            <input type="file" accept="image/*" capture="camera" name="avatar" required>
+            <input type="file" accept="image/*" capture="camera" name="avatar" >
 
 
 
@@ -251,7 +222,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
                   NOMBRE DEL USUARIO:
 
 
-              <select required name="departamento" id="departamento">
+              <select  name="departamento" id="departamento">
 
 
               </select>

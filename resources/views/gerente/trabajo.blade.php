@@ -21,7 +21,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">SOLICITUD CERTIFICADO DE TRABAJO</label>
 
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
           <script name="fecha_solicitud">
               var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");

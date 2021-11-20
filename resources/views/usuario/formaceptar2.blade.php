@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','ACEPTAR SOLICITUD')
 @section('content')
 <br>
@@ -43,7 +43,7 @@
 
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">DETALLES DE LA SOLICITUD PENDIENTE</label>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
         <h1>INFORMACIÓN DE LA SOLICITUD</h1>
 
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
@@ -65,8 +65,25 @@
         <input type="hidden" name="fechainicio" value="<?php echo $rest2 ['fechainicio'];?>">
         <input type="hidden" name="fechafin" value="<?php echo $rest2 ['fechafin'];?>">
 
-        <br>
+        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CANTIDAD DE DÍAS QUE SOLICITA:
+         <input type="text"name="DIAS" value="
+         <?php
+         
+    $fecha1 = $rest2 ['fechainicio'];
+    $fecha2 = $rest2 ['fechafin'];
+    $date1 = new DateTime("$fecha1");
+$date2 = new DateTime("$fecha2");
+$diff = $date1->diff($date2);
+// will output 2 days
+echo $diff->days . ' días ';
 
+
+?>
+         
+         
+         ">   </label>
+        <br>
+        <br>
         <?php
         if($rest2 ['id_opcioneslista']==10){
             $fotito=$rest2 ['foto_med'];

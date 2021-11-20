@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','solicitud')
 @section('content')
 <br>
@@ -95,7 +95,7 @@ Usted realizo una consulta a contabilidad anteriormente.
       
     Complete el certificado con los datos correctos
 
-<img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+<img src="{{url('../img/login.png')}}" class="object-right-top object-scale-down h-16 w-full ">
       
 <strong>
 <label style=" margin-left: 80px;" class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">LA DIRECCIÓN DE RECURSOS HUMANOS DE COTEL R.L.</label>

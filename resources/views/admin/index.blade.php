@@ -1,9 +1,8 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 
 @section('content')
-<br>
-
+<!--
 <a href="admin/usuarios"><button class='bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>cambio de Cargo</button></a>
 <a href="admin/info"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Panel de informacion</button> </a>
 <a href="admin/reportes"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Reportes Generales</button> </a>
@@ -12,16 +11,37 @@
 <a href="admin/feriados"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Feriados</button> </a>
 <a href="admin/anticipacion"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Anticipacion de solicitudes </button> </a>
 <a href="admin/evaluaciones"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Evaluaciones </button> </a>
+-->
+<?php
+$codigo= session('codigo_usu');
 
+$coneccion = mysqli_connect ("localhost", "root", "" );
+$basededatos = 'cotel';
+$bd =mysqli_select_db ($coneccion, $basededatos);
+$codigo2 = " SELECT u.id, u.nombres_usu,u.apellidos_usu,u.codigo_usu, DAY(u.Fnac) as dnac,MONTH(u.Fnac) as mnac FROM usuario u WHERE u.codigo_usu=$codigo ";
+$resultado2 = mysqli_query($coneccion, $codigo2);
+while ($rest2 = mysqli_fetch_array($resultado2)) {
+    $idusu=$rest2['id'];
+    $nombres=$rest2['nombres_usu'];
+    $apellidos=$rest2['apellidos_usu'];
+    $dnac=$rest2['dnac'];
+    $mnac=$rest2['mnac'];
+    
 
+}
+$mes = date("m");
+$dia = date("d");  
+ 
+?>
+              
 <div class="container mx-auto">
-    <h1 class="text-yellow-800 font-bold text-3xl text-center">Ver solicitudes en proceso</h1>
+    <h1 class="text-black font-bold text-3xl text-center">SOLICITUDES EN PROCESO</h1>
     <br>
     <section class="mr-16 ml-32">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
 
             <a href="admin/formpend">
-                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">FORMULARIO DE EXCEPCIONES EMPLEADOS
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,7 +50,7 @@
                  </div>
             </a>
             <a href="admin/boleta">
-                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">SOLICITUD BOLETA DE PAGO EMPLEADOS
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -40,7 +60,7 @@
                 </div>
             </a>
             <a href="admin/trabajo">
-                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">CERTIFICADO DE TRABAJO EMPLEADOS
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,7 +69,7 @@
                 </div>
             </a>
             <a href="admin/medico">
-                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">SOLICITUD BAJA MEDICA EMPLEADOS
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -66,7 +86,7 @@
     <section class="mr-16 ml-32">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
 
-                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <div class="container mx-auto mt-2 space-x-4">
                         <a href="admin/formapro"><button  class='bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-yellow-500'>
                             Aprobados
@@ -77,7 +97,7 @@
                         </a>
                     </div>
                  </div>
-                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <div class="container mx-auto mt-2 space-x-4">
                         <a href="admin/bolapro"><button  class='bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-yellow-500'>
                             Aprobados
@@ -88,7 +108,7 @@
                         </a>
                     </div>
                  </div>
-                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <div class="container mx-auto mt-2 space-x-4">
                         <a href="admin/trabapro"><button  class='bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-yellow-500'>
                             Aprobados
@@ -99,7 +119,7 @@
                         </a>
                     </div>
                  </div>
-                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <div class="container mx-auto mt-2 space-x-4">
                         <a href="admin/medapro"><button  class='bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-yellow-500'>
                             Aprobados
@@ -117,4 +137,5 @@
 
 
 <br>
+
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','welcome')
 @section('content')
 <?php
@@ -7,7 +7,7 @@ $basededatos = 'cotel';
 $bd =mysqli_select_db ($coneccion, $basededatos);
 ?>
 <br>
-<div class="bg-gray-400 mx-auto max-w-4xl py-5 px-5 sm:px-24 shadow-xl mb-16">
+<div class="bg-white mx-auto max-w-4xl py-5 px-5 sm:px-24 shadow-xl mb-16">
     <form action="{{route('admin.regis')}}" method="post" autocomplete="off">
         @csrf
 
@@ -61,7 +61,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
 
             <div class="-mx-3 md:flex mt-2">
                 <div class="md:w-full px-3">
-                <button type="submit" class="md:w-full bg-yellow-400 text-white hover:bg-green-400 font-bold py-2 px-32 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                <button type="submit" class="md:w-full bg-orange-400 text-white hover:bg-yellow-400 font-bold py-2 px-32 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                   REGISTRAR
                 </button>
               </div>

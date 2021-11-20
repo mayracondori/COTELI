@@ -11,6 +11,7 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
+        
         return view('index');
         //return "bienvenido";
     }
@@ -149,7 +150,7 @@ public function login(Request $req )
 date_default_timezone_set("America/La_Paz");
 $desde = 00; # Desde las ocho de la mañana
 $hasta = 24; # Hasta las 18
-$lunes = 1; $martes =2; $miercoles =3; $jueves =0; $viernes = 6;
+$lunes = 1; $martes =2; $miercoles =3; $jueves =4; $viernes = 6;
 $dia_actual = intval(date("w"));
 $hora_actual = intval(date("H"));
 if ($hora_actual >= $desde && $hora_actual < $hasta) {
@@ -197,8 +198,14 @@ if(count($validacion45671)>0){
 
        session(['codigo_usu' => $codigo_usu]);
        $codigo = $req->session()->get('codigo_usu');
+      
        return view('admin.index');
-       echo"<script>alert('BIENVENIDO');</script>";
+       
+
+
+
+
+
        }else{
 
            $validacion3 = DB::table('usuario')->where(['codigo_usu'=>$codigo_usu,'contraseña_usu'=>$contraseña_usu,'id_tipousuario'=>'3'])->get();

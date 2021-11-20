@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','usuario')
 
 @section('content')
@@ -18,7 +18,20 @@
 		}
 	</style>
 
-<div class="antialiased sans-serif bg-gray-100 h-screen">
+<div class="mt-10 md:flex ">
+<div style="margin-left:20px" class=" flex-row  mb-2 md:mr-1">
+
+Los eventos en el calendario se muestran segun el siguiente detalle:
+<ol >
+<li> <button style="background-color:#c9e9f6">Solicitud de excepciones</button> </li>
+
+<li> <button style="background-color:#c9f6d6"> Baja médica</button></li>
+
+<li> <button style="background-color:#ffd8d8"> Aniversario Cotel</button></li>
+<li> <button style="background-color:#ffffc4">Cumpleaños</button></li>
+</ol>
+</DIV>
+<div class="max-w-full  flex-rowantialiased sans-serif bg-gray-100 h-screen">
 	<div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
 		<div class="container mx-auto px-4 py-2 md:py-24">
 			  
@@ -33,7 +46,7 @@
 						<span x-text="MONTH_NAMES[month]" class="text-lg font-bold text-gray-800"></span>
 						<span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
 					</div>
-					<div class="border rounded-lg px-1" style="padding-top: 2px;">
+					<div class="border rounded-lg px-1" style="padding-top: 0px;">
 						<button 
 							type="button"
 							class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center" 
@@ -113,12 +126,9 @@
 		</div>
 
 	</div>
-<BR></BR>
+	</div>	
 	<script>
-
-
-
-
+	
 		const MONTH_NAMES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		const DAYS = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Domingo'];
 
@@ -132,14 +142,14 @@
 
 				events: [
 					<?php
-$codigo= session('codigo_usu');
+$codigousu= session('codigo_usu');
 
 $coneccion = mysqli_connect ("localhost", "root", "" );
 $basededatos = 'cotel';
 $bd =mysqli_select_db ($coneccion, $basededatos);
 $codigo = "SELECT s.id,s.fechainicio,s.fechafin,YEAR(s.fechainicio) as anioinicio, MONTH(s.fechainicio) as mesinicio,DAY(s.fechainicio) as diainicio,YEAR(s.fechafin)as aniofin,MONTH(s.fechafin) as mesfin,DAY(s.fechafin) as diafin,t.id_tiposolicitud,t.nom_tiposolicitud,te.nom_tipoexcepcion, o.nom_opciones
 FROM solicitud as s , tiposolicitud as t, tipoexcepcion as te, opcioneslista as o, usuario as u
-WHERE u.codigo_usu=$codigo and u.id=s.id_usuario and s.estado=1 and s.id_tiposolicitud!=2 and s.id_tiposolicitud!=3 and s.id_tiposolicitud = t.id_tiposolicitud AND
+WHERE u.codigo_usu=$codigousu and u.id=s.id_usuario and s.estado=1 and s.id_tiposolicitud!=2 and s.id_tiposolicitud!=3 and s.id_tiposolicitud = t.id_tiposolicitud AND
 s.id_tipoexcepcion=te.id_tipoexcepcion and s.id_opcioneslista=o.id_opcioneslista";
 $resultado = mysqli_query($coneccion, $codigo);
 $color='red';
@@ -187,7 +197,8 @@ $dias=$dias+1;
 }
 }
 ?>
-					<?php
+					<?php 
+
 				}
 				?>
 
@@ -195,7 +206,30 @@ $dias=$dias+1;
 						event_date: new Date(2021, 3, 12),
 						event_title: "ANIVERSARIO COTEL",
 						event_theme: 'red'
+					},
+					<?php
+					$codigo123 = "SELECT DAY(Fnac)as dia,MONTH(Fnac) as mes,YEAR(Fnac) as an from usuario WHERE codigo_usu=$codigousu";
+					$resultado123 = mysqli_query($coneccion, $codigo123);
+					while ($rest123 = mysqli_fetch_array($resultado123)) {
+					
+					$dia=$rest123['dia'];
+					$mes=$rest123['mes']-1;
+					$an= date('Y');
+
+					
+				
+					?>
+					
+					{
+
+						event_date: new Date(2021, <?php echo $mes?>, <?php echo $dia?>),
+						event_title: "FELIZ CUMPLEAÑOS",
+						event_theme: 'yellow'
 					}
+					<?php
+				
+					}
+				?>
 				],
 				event_title: '',
 				event_date: '',
@@ -289,6 +323,7 @@ $dias=$dias+1;
 			}
 		}
 	</script>
+	</div>
   </div>
   <script></script>
   @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','SOLICITUDES PENDIENTES')
 @section('content')
 <?php

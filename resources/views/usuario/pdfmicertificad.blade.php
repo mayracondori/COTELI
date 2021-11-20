@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','admin')
 @section('content')
 
@@ -24,11 +24,11 @@ $idsolicitud= session('pdfcerti');
  <form enctype="multipart/form-data" action="{{('micertificadoT')}}" method="POST">
 @csrf
       <input type="hidden" name="idsolicitud" value="<?php echo $idsolicitud ?>">
-<img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-left-top object-scale-down h-20 w-full ">
+<img src="{{url('../img/login.png')}}"  class="object-left-top object-scale-down h-20 w-full ">
 <br>
 <?php
       
-                $utd="http://localhost/cotel/public/qrcodes/qrcode".$idsolicitud.".png";
+                $utd="http://localhost/COTELI/public/qrcodes/qrcode".$idsolicitud.".png";
                 ?>
                  <img style="margin: 0px 0px 0px 500px; "  src="<?php echo $utd;?>">
 

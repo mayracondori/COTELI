@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\usuario;
+use App\Models\conpr;
+use App\Models\pregunta;
 use App\Models\feriado;
+use App\Models\bloque;
+use App\Models\evaluaciones;
+use App\Models\conevapre;
+use App\Models\notificacion;
 use App\Models\tiporespuesta;
 use Illuminate\Http\Request;
 use App\Models\Solicitud;
@@ -17,7 +23,55 @@ class AdminController extends Controller
         //metodo inicial
         return view('admin.index');
     }
+    public function solpermiso(Request $request)
+    {
+        $boleta = new Solicitud;
+        $boleta->id_usuario=$request->id;
+        $boleta->id_tiposolicitud='1';
+        $boleta->id_tipoexcepcion='1';
+        $boleta->fecha_solicitud=$request->fecha_solicitud;
+      
+        $date = date_create("$request->fechainicio");
+        $fechaini =date_format($date,"Y/m/d");
+        $boleta->fechainicio=$fechaini;
 
+        $date2 = date_create("$request->fechafin");
+        $fechafi =date_format($date2,"Y/m/d");
+        $boleta->fechafin=$fechafi;
+
+        $boleta->id_opcioneslista=2;
+        $boleta->destino='0';
+        $boleta->estado='1';
+        $boleta->comentario='';
+        $boleta->fecharespuesta=$request->fecha_solicitud;
+        $boleta->horainicio="";
+        $boleta->horafin="";
+        $boleta->save();
+        echo"<script>alert('SU PERMISO POR CUMPLEAÑOS FUÉ ACEPTADO');</script>";
+       
+        return redirect()->route('admin.index');
+    }
+
+    public function permisocumple(){
+        // metodo mostrar un elemento
+        return view('admin.permisocumple');
+
+    }
+    public function mostrarlistadepreguntas(){
+        // metodo mostrar un elemento
+        return view('admin.mostrarlistadepreguntas');
+
+    }
+    public function nuevanoti(){
+        // metodo mostrar un elemento
+        return view('admin.nuevanoti');
+
+    }
+    public function nuevaevaluacion(){
+        // metodo mostrar un elemento
+        return view('admin.nuevaevaluacion');
+
+    }
     public function formulario(){
         // metodo mostrar un elemento
         return view('admin.formulario');
@@ -26,6 +80,16 @@ class AdminController extends Controller
     public function nuevotiporesp(){
         // metodo mostrar un elemento
         return view('admin.nuevotiporesp');
+
+    }
+    public function nuevobloque(){
+        // metodo mostrar un elemento
+        return view('admin.nuevobloque');
+
+    }
+    public function fechaevaluacion(){
+        // metodo mostrar un elemento
+        return view('admin.fechaevaluacion');
 
     }
     public function evaluaciones(){
@@ -124,6 +188,12 @@ class AdminController extends Controller
 
 
     }
+    public function reporteseva(){
+        // metodo mostrar algo especifico
+        return view('admin.reporteseva');
+
+
+    }
 
     public function formpend(){
         // metodo mostrar algo especifico
@@ -145,6 +215,18 @@ class AdminController extends Controller
 
 
     }
+    public function listaevaluacionescom(){
+        // metodo mostrar algo especifico
+        return view('admin.listaevaluacionescom');
+
+
+    }
+    public function listanoti(){
+        // metodo mostrar algo especifico
+        return view('admin.listanoti');
+
+
+    }
  public function formmodificar(){
         // metodo mostrar algo especifico
         return view('admin.formmodificar');
@@ -157,6 +239,13 @@ class AdminController extends Controller
 
 
     }
+    public function listadeevaluaciones(){
+        // metodo mostrar algo especifico
+        return view('admin.listadeevaluaciones');
+    }
+    public function verevaluacion(){
+        return view('admin.verevaluacion');
+        }
     public function agre(){
         // metodo mostrar algo especifico
         return view('admin.agre');
@@ -193,6 +282,12 @@ class AdminController extends Controller
 
 
     }
+    public function listadepreguntas(){
+        // metodo mostrar algo especifico
+        return view('admin.listadepreguntas');
+
+
+    }
     public function feriadonuevo(){
         // metodo mostrar algo especifico
         return view('admin.feriadonuevo');
@@ -220,6 +315,58 @@ class AdminController extends Controller
 
     }
 
+
+    public function modifpreguntas(Request $request){
+        if($request->boton=="HABILITAR"){
+            $estado =1;
+        }else{
+               $estado=0;
+             }
+
+          $id=$request->Id_pre;
+          pregunta::where('Id_pre', $id)
+        ->update(['Estado_pre' => $estado]);
+        return redirect()->route('admin.listadepreguntas');
+
+
+    }
+    public function crearnuevotipores(Request $request)
+    {
+       
+
+        $tr = new tiporespuesta;
+        $tr->Estado_tipores=1;
+        $tr->Nom_tipores=$request->Nom_tipores;
+                       
+        $tr->save();
+        return redirect()->route('evaluaciones');
+
+
+    }
+    public function crearnuevobloque(Request $request)
+    {
+       
+
+        $bl = new bloque;
+        $bl->Nom_bloque=$request->Nom_bloque;
+                       
+        $bl->save();
+        return redirect()->route('evaluaciones');
+
+
+    }
+    public function modificarevaluacion(Request $request){
+        
+
+          $fi=$request->Fechaini;
+          $ff=$request->Fechafin;
+          bloque::where('estado', '<',2)->update(['Fecha_inicio' => $fi]);
+          bloque::where('estado', '<',2)->update(['Fecha_fin' => $ff]);
+          
+        return redirect()->route('admin.fechaevaluacion');
+
+
+    }
     public function enviarcertificado(Request $request)
     {
        
@@ -241,21 +388,8 @@ class AdminController extends Controller
         return redirect()->route('admin.index');
 
 
-    }
-    public function crearnuevotipores(Request $request)
-    {
-       
+        }
 
-        $tr = new tiporespuesta;
-        $tr->Estado_tipores=1;
-        $tr->Nom_tipores=$request->Nom_tipores;
-                       
-        $tr->save();
-        return redirect()->route('evaluaciones');
-
-
-    }
-      
             public function enviarcontabilidad(Request $request)
             {
                
@@ -272,6 +406,104 @@ class AdminController extends Controller
 
 
             }
+            public function guardarconpr(Request $request)
+            {
+                $codigo= session('codigo_usu');
+                $coneccion = mysqli_connect ("localhost", "root", "" );
+                $basededatos = 'cotel';
+                $bd =mysqli_select_db ($coneccion, $basededatos);
+             
+                        $codigo = "select * from usuario where codigo_usu=$codigo";
+                        $resultado = mysqli_query($coneccion, $codigo);
+                        while ($rest = mysqli_fetch_array($resultado)) {
+                            $id=$rest['id'];
+                        }
+
+                $pre = new pregunta;
+                
+                $pre->Id_usu=$id;
+                
+                $pre->Titulo_pre=$request->Titulo_pre;
+                $pre->Pregunta_pre=$request->Pregunta_pre;
+                $pre->Estado_pre=1;
+                $pre->Id_bloque=$request->Id_bloque;
+                $pre->save();
+                $mipre=$request->Pregunta_pre;
+
+                $codigo1 = "select * from preguntas where Pregunta_pre='$mipre'";
+                $resultado1 = mysqli_query($coneccion, $codigo1);
+                while ($rest1 = mysqli_fetch_array($resultado1)) {
+                    $idpregu=$rest1['Id_pre'];
+                }
+                $conpr1 = new conpr;
+                $conpr1->Id_pre=$idpregu;
+                $conpr1->Id_tiporesp=1;
+                $conpr1->save();
+                $conpr2 = new conpr;
+                $conpr2->Id_pre=$idpregu;
+                $conpr2->Id_tiporesp=2;
+                $conpr2->save();
+                $conpr3 = new conpr;
+                $conpr3->Id_pre=$idpregu;
+                $conpr3->Id_tiporesp=3;
+                $conpr3->save();
+                $conpr4 = new conpr;
+                $conpr4->Id_pre=$idpregu;
+                $conpr4->Id_tiporesp=4;
+                $conpr4->save();
+                $conpr5 = new conpr;
+                $conpr5->Id_pre=$idpregu;
+                $conpr5->Id_tiporesp=5;
+                $conpr5->save();
+                 
+                             
+
+                return redirect()->route('admin.listadepreguntas');
+
+
+            }
+            public function guardarconpr2(Request $request)
+            {
+                $codigo= session('codigo_usu');
+                $coneccion = mysqli_connect ("localhost", "root", "" );
+                $basededatos = 'cotel';
+                $bd =mysqli_select_db ($coneccion, $basededatos);
+             
+                        $codigo = "select * from usuario where codigo_usu=$codigo";
+                        $resultado = mysqli_query($coneccion, $codigo);
+                        while ($rest = mysqli_fetch_array($resultado)) {
+                            $id=$rest['id'];
+                        }
+
+                $pre = new evaluaciones;
+                $pre->Fechaini=$request->Fechaini;
+                $pre->Fechafin=$request->Fechafin;
+                $pre->Id_tipoeva=$request->Id_tipoeva;
+                $pre->save();
+
+                $fechaini=$request->Fechaini;
+                $fechafin=$request->Fechafin;
+                $idte=$request->Id_tipoeva;
+
+                $codigo1 = "select * from evaluaciones where Fechaini='$fechaini' and Fechafin='$fechafin' and Id_tipoeva='$idte'";
+                $resultado1 = mysqli_query($coneccion, $codigo1);
+                while ($rest1 = mysqli_fetch_array($resultado1)) {
+                    $idevacom=$rest1['Id_evacom'];
+                }
+                foreach($request->pregunta as $selected){
+     
+                    $res = new conevapre;
+                    $res->Id_evacom=$idevacom;
+                    $res->Id_pre=$selected;
+                    $res->save();
+                }
+                             
+
+                return redirect()->route('admin.listaevaluacionescom');
+
+
+            }
+           
            
 
             public function certificadopasouno(Request $request){
@@ -361,6 +593,18 @@ class AdminController extends Controller
                 $boleta->descripcion=nl2br($request->descripcion);
                 $boleta->link=$request->link;
                 $boleta->save();
+                return redirect()->route('admin.info');
+
+
+            }
+            public function regisnoti(Request $request)
+            {
+                $n = new notificacion;
+                $n->titulo_noti=strtoupper($request->titulo);
+                $n->contenido_noti=nl2br($request->descripcion);
+                $n->fechaini=$request->inicio;
+                $n->fechafin=$request->fin;
+                $n->save();
                 return redirect()->route('admin.info');
 
 

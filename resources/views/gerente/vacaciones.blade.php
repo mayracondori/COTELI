@@ -18,7 +18,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
       <div class="bg-yellow-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">FORMULARIO DE EXCEPCIONES VACACIONES</label>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
        <br>
        <?php
             $codigo1 = "select numero_dias from anticipacion where nombretipo='VACACIONES'";

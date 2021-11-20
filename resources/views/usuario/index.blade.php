@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','usuario')
 
 @section('content')
@@ -24,7 +24,7 @@ $codigo= session('codigo_usu');
                 <button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
                     Rechazadas
                 </button>
-            </a>  -->
+            </a>  
             <a href="usuario/rechazadas">
                 <button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
                     Solicitudes
@@ -55,8 +55,17 @@ $codigo= session('codigo_usu');
                   MI CALENDARIO
                 </button>
             </a>
+            <a href="usuario/evaluacion"><button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
+            Evaluacion de 180°
+    </button>
+    </a>
+    <a href="usuario/evaluaciongerente"><button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
+            Evaluacion de 360°
+    </button>
+    </a>-->
         </div>
     </div>
+    
 <div class="container mx-auto">
 
 
@@ -68,7 +77,7 @@ $codigo= session('codigo_usu');
     <section class="mr-16 ml-32">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
             <a href="usuario/formulario">
-                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                 <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">FORMULARIO DE EXCEPCIONES
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,7 +86,7 @@ $codigo= session('codigo_usu');
                  </div>
             </a>
             <a href="usuario/boleta">
-                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">SOLICITUD BOLETA DE PAGO
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -87,7 +96,7 @@ $codigo= session('codigo_usu');
                 </div>
             </a>
             <a href="usuario/trabajo">
-                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">SOLICITUD DE CERTIFICADOS
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +105,7 @@ $codigo= session('codigo_usu');
                 </div>
             </a>
             <a href="usuario/medico">
-                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded">
+                <div class="bg-yellow-500 sm:bg-yellow-400 hover:bg-orage-400 text-white font-bold py-2 px-4 rounded">
                     <h1 class="text-center">SOLICITUD BAJA MEDICA
                     </h1>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

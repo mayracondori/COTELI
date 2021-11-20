@@ -13,6 +13,40 @@ use QrCode;
 use Illuminate\Support\Facades\DB;
 class UsuarioController extends Controller
 {
+    
+    public function permisocumple(){
+        // metodo mostrar un elemento
+        return view('usuario.permisocumple');
+
+    }
+    public function solpermiso1(Request $request)
+    {
+        $boleta = new Solicitud;
+        $boleta->id_usuario=$request->id;
+        $boleta->id_tiposolicitud='1';
+        $boleta->id_tipoexcepcion='1';
+        $boleta->fecha_solicitud=$request->fecha_solicitud;
+      
+        $date = date_create("$request->fechainicio");
+        $fechaini =date_format($date,"Y/m/d");
+        $boleta->fechainicio=$fechaini;
+
+        $date2 = date_create("$request->fechafin");
+        $fechafi =date_format($date2,"Y/m/d");
+        $boleta->fechafin=$fechafi;
+
+        $boleta->id_opcioneslista=2;
+        $boleta->destino='0';
+        $boleta->estado='1';
+        $boleta->comentario='';
+        $boleta->fecharespuesta=$request->fecha_solicitud;
+        $boleta->horainicio="";
+        $boleta->horafin="";
+        $boleta->save();
+        echo"<script>alert('SU PERMISO POR CUMPLEAÑOS FUÉ ACEPTADO');</script>";
+       
+        return redirect()->route('usuario.index');
+    }
            
     public function calendario(){
         // metodo mostrar algo especifico
@@ -92,7 +126,7 @@ public function miscertificados(){
 
 
         if ($request->ajax()) {
-            $departamentos = Usuario::where('nombres_usu', 'like', '%' .$request->id_gerencia. '%')->get();
+            $departamentos = Usuario::where('nombres_usu', 'like', '%' .$request->id_gerencia. '%')->where('id_tipousuario', '!=', 4)->get();
             //->where('loan_officers', 'like', '%' . $officerId . '%')
             if(count($departamentos)>0){
                 foreach ($departamentos as $departamento) {
@@ -105,7 +139,90 @@ public function miscertificados(){
             return response()->json($departamentosArray);
         }
     }
+   
+    public function getDepartamen(Request $request)
+    {
 
+
+
+        $codigoeva= session('codigo_usu');
+        $coneccion = mysqli_connect ("localhost", "root", "" );
+        $basededatos = 'cotel';
+        $bd =mysqli_select_db ($coneccion, $basededatos);
+         
+                $codigo2 = " SELECT id,id_gerencia FROM usuario WHERE codigo_usu=$codigoeva ";
+                $resultado2 = mysqli_query($coneccion, $codigo2);
+                while ($rest2 = mysqli_fetch_array($resultado2)) {
+                    $ger=$rest2['id_gerencia'];
+                    $idr=$rest2['id'];
+        
+                }
+        
+
+        if ($request->ajax()) {
+           // $departamentos = Usuario::where(['nombres_usu', 'like', '%' .$request->id_gerencia. '%'])->get();
+            
+            $departamentos1 = Usuario::where('nombres_usu', 'like', '%' .$request->id_gerencia1. '%')
+            ->where('id_gerencia','=',$ger)
+            ->where('Estado_eva','=',0)
+            ->where('id_tipousuario','=',1)
+            ->where('id','!=',$idr)
+            ->get();
+            //->where('loan_officers', 'like', '%' . $officerId . '%')
+            if(count($departamentos1)>0){
+                foreach ($departamentos1 as $departamento1) {
+                    $departamenArray[$departamento1->id] =$departamento1->nombres_usu." ". $departamento1->apellidos_usu;
+                  
+                }
+                
+
+            }else{
+        $departamenArray[0] =" No existe usuario";
+            }
+            return response()->json($departamenArray);
+        }
+    }
+    public function getDepartamen2(Request $request)
+    {
+
+
+
+        $codigoeva= session('codigo_usu');
+        $coneccion = mysqli_connect ("localhost", "root", "" );
+        $basededatos = 'cotel';
+        $bd =mysqli_select_db ($coneccion, $basededatos);
+         
+                $codigo2 = " SELECT id,id_gerencia FROM usuario WHERE codigo_usu=$codigoeva ";
+                $resultado2 = mysqli_query($coneccion, $codigo2);
+                while ($rest2 = mysqli_fetch_array($resultado2)) {
+                    $ger=$rest2['id_gerencia'];
+                    $idr=$rest2['id'];
+        
+                }
+        
+
+        if ($request->ajax()) {
+           // $departamentos = Usuario::where(['nombres_usu', 'like', '%' .$request->id_gerencia. '%'])->get();
+            
+            $departamentos1 = Usuario::where('nombres_usu', 'like', '%' .$request->id_gerencia1. '%')
+            ->where('id_gerencia','=',$ger)
+            ->where('Estado_eva','=',0)
+            ->where('id_tipousuario','=',3)
+            ->get();
+            //->where('loan_officers', 'like', '%' . $officerId . '%')
+            if(count($departamentos1)>0){
+                foreach ($departamentos1 as $departamento1) {
+                    $departamenArray[$departamento1->id] =$departamento1->nombres_usu." ". $departamento1->apellidos_usu;
+                  
+                }
+                
+
+            }else{
+        $departamenArray[0] =" No existe usuario";
+            }
+            return response()->json($departamenArray);
+        }
+    }
     public function aceptarsolicitud(Request $request){
 
 
@@ -373,8 +490,7 @@ public function imprimir1(Request $request)
                 $boleta->id_tiposolicitud='3';
                 $boleta->id_tipoexcepcion='4';
                 $boleta->fecha_solicitud=$request->fechasolicitud;
-                $boleta->fechainicio='';
-                $boleta->fechafin='';
+               
                 $boleta->id_opcioneslista='19';
                 $boleta->destino='0';
                 $boleta->estado='2';
@@ -444,7 +560,6 @@ public function imprimir1(Request $request)
                 $boleta->id_usuario=$request->id;
                 $boleta->id_tiposolicitud='1';
                 $boleta->id_tipoexcepcion='1';
-                $boleta->fecha_solicitud=$request->fecha_solicitud;
                 $boleta->fechainicio=$request->fechainicio;
                 $boleta->fechafin=$request->fechafin;
                 $boleta->id_remitente=$remitente;
@@ -564,4 +679,10 @@ public function imprimir1(Request $request)
 
 
         }
- }
+        public function evaluacion(){
+            return view('usuario.evaluacion');
+            }
+            public function evaluaciongerente(){
+                return view('usuario.evaluaciongerente');
+                }
+    }

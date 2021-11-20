@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','welcome')
 @section('content')
 <div class="bg-yellow-300 mx-auto max-w-6xl py-20 px-12 lg:px-24 shadow-xl mb-24" >
@@ -12,7 +12,7 @@
               LAS VACACIONES SON CON 10 DIAS DE ANTICIPACIÓN
             </span>
         </div>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
 
 
         <div class="m-8">

@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 @section('content')
 
@@ -25,15 +25,15 @@
 
    </head>
 
-   <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+   <body class="bg-gray-100 text-gray-900 ">
 
-
+<br>
       <!--Container-->
       <div class="container w-full md:w-4/5 xl:w-4/5  mx-auto px-2">
 
 			<!--Title-->
-			<h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-			LISTA DE USUARIOSsssssssss
+			<h1 class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">
+			LISTA DE USUARIOS
             </h1>
 
 			<!--Card-->
@@ -49,8 +49,8 @@
 							<th data-priority="3">GERENCIA</th>
 							<th data-priority="4">DEPARTAMENTO</th>
                             <th data-priority="5">TIPO DE USUARIO</th>
-
-
+<th></th>
+<th></th>
 
                           </tr>
 					</thead>
@@ -62,7 +62,7 @@ $basededatos = 'cotel';
 $bd =mysqli_select_db ($coneccion, $basededatos);
 
   $codigo = "
-  SELECT u.nombres_usu, u.codigo_usu, u.apellidos_usu, u.id_tipousuario, g.nom_gerencia, d.nom_depto, t.nom_tipousuario FROM usuario AS u, gerencia AS g, departamento AS d, tipousuario AS t WHERE u.id_tipousuario = '3' and u.id_gerencia = g.id_gerencia AND u.id_tipousuario = t.id_tipousuario AND u.id_departamento = d.id_departamento";
+  SELECT u.nombres_usu, u.codigo_usu, u.apellidos_usu, u.id_tipousuario, g.nom_gerencia, d.nom_depto, t.nom_tipousuario FROM usuario AS u, gerencia AS g, departamento AS d, tipousuario AS t WHERE u.id_tipousuario != '4' and u.id_gerencia = g.id_gerencia AND u.id_tipousuario = t.id_tipousuario AND u.id_departamento = d.id_departamento";
 $resultado = mysqli_query($coneccion, $codigo);
 
 while ($rest = mysqli_fetch_array($resultado)) {

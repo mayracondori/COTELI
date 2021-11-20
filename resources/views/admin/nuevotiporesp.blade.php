@@ -1,5 +1,5 @@
 
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','EVALUACIONES')
 @section('content')
 

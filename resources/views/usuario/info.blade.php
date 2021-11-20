@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','welcome')
 @section('content')
 <br>
@@ -18,7 +18,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
         while ($rest = mysqli_fetch_array($resultado)){
             ?>
 <div class="mx-auto max-w-4xl bg-yellow-200 py-5 px-12 lg:px-20 shadow-x2 mb-24">
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-center object-scale-down h-64 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-center object-scale-down h-64 w-full ">
 
             <p class="uppercase text-black text-xl text-center font-bold"> <?php echo $rest ['titulo']; ?></p> <br>
             <p class="text-justify"><?php echo $rest ['descripcion']; ?></p>

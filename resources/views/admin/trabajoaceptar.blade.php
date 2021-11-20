@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','solicitud')
 @section('content')
 <br>
@@ -34,30 +34,43 @@
 <div class="mx-auto max-w-4xl bg-yellow-100 py-5 px-12 lg:px-24 shadow-xl mb-24">
     <form action="{{('certificadopasouno')}}" method="POST">
 @csrf
-<label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">
+<label class="uppercase tracking-wide mb-2" for="">
 
       <div class="bg-yellow-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
 
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">DETALLES DE LA SOLICITUD PENDIENTE</label>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}" class="object-right-top object-scale-down h-16 w-full ">
         <h1>INFORMACIÓN DE LA SOLICITUD</h1>
 
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
-         <input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fecha_solicitud']; ?>">   </label>
 
-        
-         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for=""> REQUISITOS DEL CERTIFICADO:
-
-         <label><?php echo $rest2 ['comentario']; ?></label>   
-         
-         </label>
+<table>
+<tbody>
+<tr>
+<td><label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:</td>
+<td> <input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fecha_solicitud']; ?>">   </label></td>
+</tr>
+<tr>
+<td><label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for=""> REQUISITOS DEL CERTIFICADO:</td>
+<td> <label><?php echo $rest2 ['comentario']; ?></label>  
          <input type="hidden" name="remitente3" value="<?php echo $codigo3; ?>">
+  </td>
+</tr>
 
+</tbody>
+</table> 
+
+        </label>
+        
 
          <h6>INFORMACIÓN DEL SOLICITANTE</h6>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
 
+    
+<table>
+<tbody>
+<tr>
+<td><label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:</td>
+<td>
         <input type="text" name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
         
         <input type="hidden" name="id" value="<?php echo $rest2['id']; ?>">
@@ -66,14 +79,22 @@
         <input type="hidden" name="historialremit" value="<?php echo $rest2['historial_remitentes']; ?>">
         <input type="hidden" name="codigoempleado" value="<?php echo $solicitante; ?>">
 
-        </label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
-            <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
-        </label>
+        </label></td>
 
+</tr>
+<tr>
+<td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
+        </td>
+        <td>
+           <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
+        </label>
+        </td>
+</tr>
 
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
-            <input type="text"  name="gerencia" value="<?php
+<tr>
+<td>  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
+      </td>
+      <td> <input type="text"  name="gerencia" value="<?php
                 $id=$rest['id'];
                  $consulta="SELECT g.nom_gerencia from usuario as u, gerencia as g where u.id = '$id'and g.id_gerencia =u.id_gerencia";
                  $gerencia = mysqli_query($coneccion, $consulta);
@@ -85,10 +106,11 @@
 
                  >
                 </label>
-
-
-            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:
-            <input type="text"name="departamento" value="<?php
+</td>
+</tr>
+<tr>
+<td><label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:</td>
+<td>  <input type="text"name="departamento" value="<?php
             $id=$rest['id'];
              $consulta="SELECT d.nom_depto FROM usuario as u, departamento as d where u.id = '$id'and d.id_departamento =u.id_departamento";
              $gerencia = mysqli_query($coneccion, $consulta);
@@ -100,6 +122,18 @@
 
              >
         </label>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+           
+
+            
+          
 
         <label class="uppercase text-black text-xs font-bold mb-2" for="">COMENTARIO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

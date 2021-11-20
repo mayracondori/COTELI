@@ -1,5 +1,5 @@
 
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 @section('content')
 
@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
 
 </head>
-
+</div>
 
 
 <div class="mx-auto max-w-4x3">
@@ -29,7 +29,7 @@
             $anioactual=date("Y");
 
              ?>
-<h1 class="text-green-500 text-center"> <p class="text-4xl ">Reportes por gerencias seleccione una</p> </h1>
+<h1 class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2"> <p class="text-4xl ">Reportes por gerencias seleccione una</p> </h1>
 <br>
 
 <div class="grid grid-cols-3 gap-4">
@@ -52,7 +52,7 @@
 
 
         <div id="div1"  style="display:none">
-        <h1 class="text-red-500 text-center"> <p class="text-4xl ">REPORTE: GERENCIA SISTEMAS</p> </h1>
+        <h1 class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2"> <p class="text-4xl ">REPORTE: GERENCIA SISTEMAS</p> </h1>
 
 
 
@@ -65,7 +65,7 @@
         <div class="main-content bg-gray-500 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class="md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -440,7 +440,7 @@ while ($rest1 = mysqli_fetch_array($resultado1)) {
 
 
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -505,7 +505,7 @@ if($rest10['year']==$primeranio){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                      <!--Graph Card-->
                      <div class="bg-white border-transparent rounded-lg shadow-lg">
@@ -619,7 +619,7 @@ if($rest9['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -723,7 +723,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -782,7 +782,7 @@ if($rest['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -883,7 +883,7 @@ if($rest['id_tipoexcepcion']=='1'){
         <div class="main-content bg-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1117,7 +1117,7 @@ if($rest['id_tipoexcepcion']=='1'){
 
 
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1182,7 +1182,7 @@ if($rest10['year']==$primeranio2){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                      <!--Graph Card-->
                      <div class="bg-white border-transparent rounded-lg shadow-lg">
@@ -1266,7 +1266,7 @@ if($rest9['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1346,7 +1346,7 @@ if($rest9['id_tipoexcepcion']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1409,7 +1409,7 @@ if($rest['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1522,7 +1522,7 @@ if($rest['id_tipoexcepcion']=='1'){
         <div class="main-content bg-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1757,7 +1757,7 @@ if($rest['id_tipoexcepcion']=='1'){
 
 
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1822,7 +1822,7 @@ if($rest10['year']==$primeranio3){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                      <!--Graph Card-->
                      <div class="bg-white border-transparent rounded-lg shadow-lg">
@@ -1905,7 +1905,7 @@ if($rest9['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -1983,7 +1983,7 @@ if($rest9['id_tipoexcepcion']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2046,7 +2046,7 @@ if($rest['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2158,7 +2158,7 @@ if($rest['id_tipoexcepcion']=='1'){
         <div class="main-content bg-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2393,7 +2393,7 @@ $meses = array(" ","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Ago
 
 
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2458,7 +2458,7 @@ if($rest10['year']==$primeranio4){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                      <!--Graph Card-->
                      <div class="bg-white border-transparent rounded-lg shadow-lg">
@@ -2542,7 +2542,7 @@ if($rest9['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2621,7 +2621,7 @@ if($rest9['id_tipoexcepcion']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2684,7 +2684,7 @@ if($rest['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -2788,7 +2788,7 @@ if($rest['id_tipoexcepcion']=='1'){
         <div class="main-content bg-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3019,7 +3019,7 @@ if($cuartomes==1||$cuartomes==2||$cuartomes==3){
 
 
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3084,7 +3084,7 @@ if($cuartomes==1||$cuartomes==2||$cuartomes==3){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3166,7 +3166,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3244,7 +3244,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3307,7 +3307,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3418,7 +3418,7 @@ if($cuartomes==1){
         <div class="main-content bg-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 uppercase text-gray-800 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3646,7 +3646,7 @@ if($cuartomes==1){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3711,7 +3711,7 @@ if($cuartomes==1){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                      <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3794,7 +3794,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3872,7 +3872,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -3935,7 +3935,7 @@ if($cuartomes==1){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">

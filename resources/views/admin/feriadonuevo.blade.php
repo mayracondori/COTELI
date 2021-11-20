@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','NUEVO FERIADO')
 @section('content')
 <br>
@@ -16,7 +16,7 @@
 
       <div class="bg-yellow-200 shadow-md rounded  flex-col ">
 
-      <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-center object-scale-down h-64 w-full ">
+      <img src="{{url('../img/login.png')}}"  class="object-center object-scale-down h-64 w-full ">
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold ">INFORMACIÓN DEL FERIADO</label>
       

@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','welcome')
 @section('content')
 
@@ -12,7 +12,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
 	<div class="mx-auto max-w-4xl" >
 		<table class="w-full flex flex-row  flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
 			<thead class="text-white">
-				<tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+				<tr class="bg-orange-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
 					<th class="p-3 text-center">#</th>
                     <th class="p-3 text-center">TIPO DE SOLICITUD</th>
                     <th class="p-3 text-center">DIAS DE ANTICIPACION </th>

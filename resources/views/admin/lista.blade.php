@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','welcome')
 @section('content')
 
@@ -12,7 +12,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
 	<div class="mx-auto max-w-4xl" >
 		<table class="w-full flex flex-row  flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
 			<thead class="text-white">
-				<tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+				<tr class="bg-orange-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
 					<th class="p-3 text-center">Titulo</th>
                     <th class="p-3 text-center">Descripción</th>
                     <th class="p-3 text-center">Link</th>
@@ -35,7 +35,7 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
 				<tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
 					<td class="border-grey-light border hover:bg-gray-100 p-3 "><?php echo $rest['titulo'] ;?></td>
 					<td class="border-grey-light border hover:bg-gray-100 p-3 "><?php echo $rest['descripcion'] ;?> </td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3 "><a href="<?php echo $rest['link'] ;?> " target="_blank"> <p class="text-green-500"> INGRESAR A LINK</p></td></a>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3 "><a href="<?php echo $rest['link'] ;?> " target="_blank"> <p class="text-blue-500"> INGRESAR A LINK</p></td></a>
                     <td class="border-grey-light border hover:bg-gray-100 p-3 "><?php echo $rest['fecha'] ;?></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3 "> <p class="text-red-500"> Quitar </p></td>
                 </tr>

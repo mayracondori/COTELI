@@ -21,8 +21,17 @@ $codigo= session('codigo_usu');
         Rechazadas
     </button>
     </a>
+    <a href="gerente/miscertificados">
+                <button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
+                  MIS CERTIFICADOS 
+                </button>
+            </a>
     <a href="gerente/poraprobar"><button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
         Solicitudes por aprobar
+    </button>
+    </a>
+    <a href="gerente/evaluacion"><button class='bg-blue-300 text-white font-bold py-2 px-4 rounded hover:bg-blue-800'>
+    Evaluacion de 90°
     </button>
     </a>
 </div>

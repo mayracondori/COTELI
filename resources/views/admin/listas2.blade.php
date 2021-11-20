@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 @section('content')
 
@@ -34,7 +34,7 @@
             $anioactual=date("Y");
            
              ?>
-<h1 class="text-green-500 text-center"> <p class="text-4xl ">Empleados con permiso actual por gerencias seleccione una:</p> </h1>
+<h1 class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2"> <p class="text-4xl ">Empleados con permiso actual por gerencias seleccione una:</p> </h1>
 
 <br>
 

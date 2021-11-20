@@ -1,30 +1,8 @@
 
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 @section('content')
 
-
-<head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta name="description" content="">
-      <meta name="keywords" content="">
-      <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-	  <!--Replace with your tailwind.css once created-->
-
-
-      <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> <!--Totally optional :) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
-
-	 <!--Regular Datatables CSS-->
-	 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-	 <!--Responsive Extension Datatables CSS-->
-	 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
-
-   </head>
 
 
 <div class="mx-auto max-w-4x3">
@@ -35,7 +13,7 @@
             $anioactual=date("Y");
 
              ?>
-<h1 class="text-green-500 text-center"> <p class="text-4xl ">Reportes por gerencias5 seleccione una</p> </h1>
+<h1 class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2"> <p class="text-4xl ">Reportes por gerencias seleccione una</p> </h1>
 <br>
 
 <div class="grid grid-cols-3 gap-4">

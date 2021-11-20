@@ -35,9 +35,23 @@ Route::get('usuario/departamentos', [UsuarioController::class, 'getDepartamentos
 
 Route::get('/departamentos', [AdminController::class, 'getDepartamentos']);
 
+Route::get('gerente/departamentos', [GerenteController::class, 'getDepartamentos']);
+
+Route::get('usuario/departamentos1', [UsuarioController::class, 'getDepartamen']);
+
+Route::get('usuario/departamentos2', [UsuarioController::class, 'getDepartamen2']);
+
+
 
 Route::get('layouts', [PlantillaController::class, 'index'])->name('layouts.index');
 Route::get('layouts/plantilla', [PlantillaController::class, 'plantilla']);
+Route::get('layouts/plantillainicio', [PlantillaController::class, 'plantillainicio']);
+
+Route::get('layouts/plantillaadmin', [PlantillaController::class, 'plantillaadmin']);
+Route::get('layouts/plantillausuario', [PlantillaController::class, 'plantillausuario']);
+Route::get('layouts/plantillagerente', [PlantillaController::class, 'plantillagerente']);
+
+Route::get('layouts/cerrarsesion', [PlantillaController::class, 'cerrarsesion'])->name('layouts/cerrarsesion');
 
     Route::post('layauts', [PlantillaController::class, 'store'])->name('layauts.store');
     //Route::get('layouts/mon', [PlantillaController::class, 'mon'])->name('layouts.index');
@@ -82,12 +96,17 @@ Route::get('usuario/create', [UsuarioController::class, 'create']);
 
     Route::get('usuario/miscertificados', [UsuarioController::class, 'miscertificados']);
 
-    Route::post('pdfcertificado', [UsuarioController::class,'pdfcertificado'])->name('usuario.pdfcertificado');
+    Route::post('usuario/pdfcertificado', [UsuarioController::class,'pdfcertificado'])->name('usuario.pdfcertificado');
 
     Route::get('usuario/certificadopdfuno', [UsuarioController::class, 'certificadopdfuno'])->name('usuario.certificadopdfuno');
     Route::POST('usuario/micertificadoT', [UsuarioController::class, 'micertificadoT'])->name('usuario.micertificadoT');
     Route::get('usuario/pdfmicertificad', [UsuarioController::class, 'pdfmicertificad'])->name('usuario.pdfmicertificad');
     
+    Route::get('usuario/evaluacion', [UsuarioController::class, 'evaluacion'])->name('usuario.evaluacion');
+    Route::get('usuario/evaluaciongerente', [UsuarioController::class, 'evaluaciongerente'])->name('usuario.evaluaciongerente');
+    Route::get('usuario/permisocumple', [UsuarioController::class, 'permisocumple'])->name('usuario.permisocumple');
+    Route::post('usuario/permisol', [UsuarioController::class, 'solpermiso1'])->name('usuario.solpermiso1');
+
     Route::get('admin', [AdminController::class, 'index']);
     Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
 
@@ -97,10 +116,15 @@ Route::get('usuario/create', [UsuarioController::class, 'create']);
     Route::get('admin/trabajo', [AdminController::class, 'trabajo']);
     Route::get('admin/medico', [AdminController::class, 'medico']);
     Route::get('admin/reportes', [AdminController::class, 'reportes']);
+    
+    Route::get('admin/reporteseva', [AdminController::class, 'reporteseva']);
     Route::get('admin/repo', [AdminController::class, 'repo']);
     Route::get('admin/maps', [AdminController::class, 'maps']);
     
 Route::get('admin/evaluaciones', [AdminController::class,'evaluaciones'])->name('evaluaciones');
+
+Route::get('admin/listadeevaluaciones', [AdminController::class,'listadeevaluaciones'])->name('listadeevaluaciones');
+Route::POST('admin/verevaluacion', [AdminController::class,'verevaluacion'])->name('verevaluacion');
 
     /////
     Route::get('admin/formapro', [AdminController::class, 'formapro']);
@@ -144,11 +168,29 @@ Route::get('admin/crearcertificado', [AdminController::class, 'crearcertificado'
     Route::POST('admin/enviarcontabilidad', [AdminController::class, 'enviarcontabilidad']);
     Route::get('admin/nuevotiporesp', [AdminController::class, 'nuevotiporesp'])->name('admin.nuevotiporesp');
     Route::POST('admin/crearnuevotipores', [AdminController::class, 'crearnuevotipores'])->name('crearnuevotipores');
+    Route::POST('admin/guardarconpr', [AdminController::class, 'guardarconpr'])->name('guardarconpr');
     
+
     Route::get('admin/trabajo', [AdminController::class, 'trabajo'])->name('admin.trabajo');
+    Route::get('admin/nuevobloque', [AdminController::class, 'nuevobloque'])->name('admin.nuevobloque');
+    Route::POST('admin/crearnuevobloque', [AdminController::class, 'crearnuevobloque'])->name('crearnuevobloque');
+    Route::get('admin/listadepreguntas', [AdminController::class, 'listadepreguntas'])->name('admin.listadepreguntas');
+    Route::POST('admin/modifpreguntas', [AdminController::class, 'modifpreguntas'])->name('modifpreguntas');
+    Route::get('admin/fechaevaluacion', [AdminController::class, 'fechaevaluacion'])->name('admin.fechaevaluacion');
+    Route::POST('admin/modificarevaluacion', [AdminController::class, 'modificarevaluacion'])->name('modificarevaluacion');
+    
+    Route::post('admin/permiso', [AdminController::class, 'solpermiso'])->name('admin.solpermiso');
 
-
-
+    Route::get('admin/permisocumple', [AdminController::class, 'permisocumple'])->name('admin.permisocumple');
+    Route::get('admin/nuevanoti', [AdminController::class, 'nuevanoti']);
+    Route::post('admin/regisnoti', [AdminController::class, 'regisnoti'])->name('admin.regisnoti');
+    Route::get('admin/listanoti', [AdminController::class, 'listanoti']);
+    Route::get('admin/nuevaevaluacion', [AdminController::class, 'nuevaevaluacion']);
+    Route::get('admin/listaevaluacionescom', [AdminController::class, 'listaevaluacionescom'])->name('admin.listaevaluacionescom');
+    Route::POST('admin/guardarconpr2', [AdminController::class, 'guardarconpr2'])->name('guardarconpr2');
+    Route::get('admin/mostrarlistadepreguntas', [AdminController::class, 'mostrarlistadepreguntas'])->name('mostrarlistadepreguntas');
+    
+    
     Route::get('gerente', [gerenteController::class, 'index'])->name('gerente.index');
         Route::get('gerente/boleta', [gerenteController::class, 'boleta']);
         Route::get('gerente/comisiones', [gerenteController::class, 'comisiones']);
@@ -170,9 +212,23 @@ Route::get('admin/crearcertificado', [AdminController::class, 'crearcertificado'
         Route::post('gerente/boleta', [gerenteController::class, 'solboleta'])->name('gerente.solboleta');
         Route::post('gerente/trabajo', [gerenteController::class, 'soltrabajo'])->name('gerente.soltrabajo');
         Route::post('gerente/medico', [gerenteController::class, 'solmedico'])->name('gerente.solmedico');
-        Route::get('conta', [ContaController::class, 'index']);
+        Route::get('gerente/evaluacion', [gerenteController::class, 'evaluacion'])->name('gerente.evaluacion');
+        Route::get('gerente/listaevaluaciones', [gerenteController::class, 'listaevaluaciones'])->name('gerente.listaevaluaciones'); 
+        Route::POST('gerente/enviareva', [gerenteController::class, 'enviareva'])->name('gerente.enviareva');
+        Route::get('gerente/miscertificados', [gerenteController::class, 'miscertificados']);
+
+        Route::post('pdfcertificado', [gerenteController::class,'pdfcertificado'])->name('gerente.pdfcertificado');
+    
+        Route::get('gerente/certificadopdfuno', [gerenteController::class, 'certificadopdfuno'])->name('gerente.certificadopdfuno');
+        Route::POST('gerente/micertificadoT', [gerenteController::class, 'micertificadoT'])->name('gerente.micertificadoT');
+        Route::get('gerente/pdfmicertificad', [gerenteController::class, 'pdfmicertificad'])->name('gerente.pdfmicertificad');
+        
+    
+    
+    Route::get('conta', [ContaController::class, 'index']);
     Route::get('conta', [ContaController::class, 'index'])->name('conta.index')->name('conta.respondidas');
     Route::get('conta/respondidas', [ContaController::class, 'respondidas']);
     Route::get('conta/pendientes', [ContaController::class, 'pendientes']);
     Route::get('conta/formaceptar', [ContaController::class, 'formaceptar']);
     Route::POST('conta/aceptarsolicitud', [Contacontroller::class, 'aceptarsolicitud'])->name('conta.aceptarsolicitud');
+    

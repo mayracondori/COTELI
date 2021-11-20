@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','solicitud')
 @section('content')
 <br>
@@ -39,22 +39,43 @@ use App\Models\Solicitud;
 
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">DETALLES DE LA SOLICITUD PENDIENTE</label>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}" class="object-right-top object-scale-down h-16 w-full ">
         <h1>INFORMACIÓN DE LA SOLICITUD</h1>
+<table>
+<tbody>
+<tr>
+<td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:</td>
+<td><input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fecha_solicitud']; ?>">   </label></td>
+</tr>
+<tr>
+<td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA INICIO:</td>
+<td> <input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fechainicio']; ?>">   </label></td>
+</tr>
+<tr>
+<td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA FIN:</td>
+<td><input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fechafin']; ?>">   </label></td>
+</tr>
+<tr>
+<td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CANTIDAD DE DÍAS QUE SOLICITA:</td>
+<td> <input type="text"name="DIAS" value="
+         <?php
+         
+    $fecha1 = $rest2 ['fechainicio'];
+    $fecha2 = $rest2 ['fechafin'];
+    $date1 = new DateTime("$fecha1");
+$date2 = new DateTime("$fecha2");
+$diff = $date1->diff($date2);
+// will output 2 days
+echo $diff->days . ' días ';
 
 
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
-         <input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fecha_solicitud']; ?>">   </label>
-
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA INICIO:
-         <input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fechainicio']; ?>">   </label>
-
-         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA FIN:
-         <input type="text"name="fechasolicitud" value="<?php echo $rest2 ['fechafin']; ?>">   </label>
-
-
-
-
+?>
+         
+         
+         ">   </label></td>
+</tr>
+</tbody>
+</table>
 
             <?php
                 $fotito=$rest2 ['foto_med'];
@@ -70,8 +91,12 @@ use App\Models\Solicitud;
 
 
           <h6>INFORMACIÓN DEL SOLICITANTE</h6>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
-
+          <table>
+          <tbody>
+          <tr>
+          <td><label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
+</td>
+          <td>   
         <input type="text" name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
         <input type="hidden" name="id" value="<?php echo $rest ['id']; ?>">
         <input type="hidden" name="comentarioger" value="<?php echo $rest2['comentario']; ?>">
@@ -79,14 +104,18 @@ use App\Models\Solicitud;
         <input type="hidden" name="historialremit" value="<?php echo $rest2['historial_remitentes']; ?>">
 
 
-    </label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
-            <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
+    </label></td>
+          </tr>
+
+          <tr>
+          <td><label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:</td>
+         
+         <td>  <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
         </label>
-
-
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
-            <input type="text"  name="gerencia" value="<?php
+         </td> </tr>
+         <tr>
+         <td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:</td>
+         <td> <input type="text"  name="gerencia" value="<?php
                 $id=$rest['id'];
                  $consulta="SELECT g.nom_gerencia from usuario as u, gerencia as g where u.id = '$id'and g.id_gerencia =u.id_gerencia";
                  $gerencia = mysqli_query($coneccion, $consulta);
@@ -97,11 +126,11 @@ use App\Models\Solicitud;
                  ?>"
 
                  >
-                </label>
-
-
-            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:
-            <input type="text"name="departamento" value="<?php
+                </label></td>
+         </tr>
+         <tr>
+         <td> <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:</td>
+         <td><input type="text"name="departamento" value="<?php
             $id=$rest['id'];
              $consulta="SELECT d.nom_depto FROM usuario as u, departamento as d where u.id = '$id'and d.id_departamento =u.id_departamento";
              $gerencia = mysqli_query($coneccion, $consulta);
@@ -113,7 +142,12 @@ use App\Models\Solicitud;
 
              >
         </label>
-
+</td>
+         </tr>
+         
+          </tbody>
+          </table>
+   
     <label class="uppercase text-black text-xs font-bold mb-2" for="">COMENTARIO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

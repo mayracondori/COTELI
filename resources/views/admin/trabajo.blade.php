@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 @section('content')
 
@@ -24,14 +24,14 @@
 
      </head>
 
-   <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
-
+   <body class="bg-gray-100 text-gray-900 ">
+<br>
 
       <!--Container-->
       <div class="container w-full md:w-4/5 xl:w-4/5  mx-auto px-2">
 
 			<!--Title-->
-			<h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+			<h1 class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">
 			SOLICITUDES DE CERTIFICADOS
             </h1>
 

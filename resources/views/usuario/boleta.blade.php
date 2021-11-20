@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillausuario')
 @section('title','usuario')
 
 @section('content')
@@ -18,31 +18,50 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
       <div class="bg-yellow-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
 
         <label class="uppercase tracking-wide text-black text-xl text-center font-bold mb-2">FORMULARIO BOLETA DE PAGO</label>
-        <img src="https://pagos.cotel.bo/assets/admin/img/login.png" class="object-right-top object-scale-down h-16 w-full ">
+        <img src="{{url('../img/login.png')}}"  class="object-right-top object-scale-down h-16 w-full ">
+        <table>
+<tbody>
+<tr>
+<td>       
+       
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">FECHA DE SOLICITUD:
-          <script name="fechasolicitud">
+          </td>
+          <td><script name="fechasolicitud">     
 
               var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
               var f=new Date();
               document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-          </script></label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
+          </script></td> </label>
+  </tr>
+  <tr>
+  <td>
+  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">CODIGO DE EMPLEADO:
 
-        <?php  $codigo = "select * from usuario where codigo_usu=$codigo";
-        $resultado = mysqli_query($coneccion, $codigo);
-        while ($rest = mysqli_fetch_array($resultado)) {
-            ?>
-
-
-        <input type="text" name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
-        <input type="hidden" name="id" value="<?php echo $rest ['id']; ?>">
-
-    </label>
-        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
-            <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
-        </label>
+<?php  $codigo = "select * from usuario where codigo_usu=$codigo";
+$resultado = mysqli_query($coneccion, $codigo);
+while ($rest = mysqli_fetch_array($resultado)) {
+    ?>
+</td>
+<td>
+<input type="text" name="codigo" value="<?php echo $rest ['codigo_usu']; ?>">
+<input type="hidden" name="id" value="<?php echo $rest ['id']; ?>">
+</td>
+</label>
+  
+  </tr>  
+  <tr>
+  <td>
+  <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">APELLIDO Y NOMBRE:
+    </label></td>
+    <td> <input type="text"  name="apellidonombre" value="<?php echo $rest['apellidos_usu']." ".$rest ['nombres_usu']; ?>">
+    </td> 
+  </tr>  
+    <tr>  
+    <td>
         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">GERENCIA:
-            <input type="text"  name="gerencia" value="<?php
+          </td>
+          <td>
+              <input type="text"  name="gerencia" value="<?php
                 $id=$rest['id'];
                  $consulta="SELECT g.nom_gerencia from usuario as u, gerencia as g where u.id= '$id'and g.id_gerencia =u.id_gerencia";
                  $gerencia = mysqli_query($coneccion, $consulta);
@@ -53,11 +72,17 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
                  ?>"
 
                  >
+                 </td>
                 </label>
 
+                </tr> 
 
+  <tr>
+           <td>
             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="">DEPARTAMENTO:
-            <input type="text"name="departamento" value="<?php
+              </td>
+              <td>
+               <input type="text"name="departamento" value="<?php
             $id=$rest['id'];
              $consulta="SELECT d.nom_depto FROM usuario as u, departamento as d where u.id= '$id'and d.id_departamento =u.id_departamento";
              $gerencia = mysqli_query($coneccion, $consulta);
@@ -68,10 +93,11 @@ $bd =mysqli_select_db ($coneccion, $basededatos);
              ?>"
 
              >
-        </label>
+        </label></td>
         <?php
     }
-    ?>
+    ?></tr> 
+    </table>
         <div class="-mx-3 md:flex mt-2">
           <div class="md:w-full px-3">
             <button type="submit"class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">

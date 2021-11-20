@@ -1,5 +1,5 @@
 
-@extends('layouts.plantilla')
+@extends('layouts.plantillaadmin')
 @section('title','admin')
 @section('content')
 
@@ -40,7 +40,7 @@
         <div class="main-content bg-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
 
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
@@ -48,8 +48,7 @@
 
 
                         <h5 class=" text-center font-bold uppercase text-gray-600"> TODAS LAS SOLICITUDES REALIZADAS</h5>
-                        <a href="admin/repo"> <button class='bg-blue-400 text-white font-bold py-2 px-4 rounded hover:bg-green-500'>Reportes por Gerencia</button> </a>
-
+         
                     </div>
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -371,7 +370,7 @@ while ($rest4 = mysqli_fetch_array($resultado4)) {
 
 
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class="md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -435,7 +434,7 @@ if($rest10['year']==$primeranio){
                     </div>
                     <!--/Graph Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                      <!--Graph Card-->
                      <div class="bg-white border-transparent rounded-lg shadow-lg">
@@ -513,7 +512,7 @@ if($rest9['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -528,6 +527,7 @@ if($rest9['id_tiposolicitud']=='1'){
 
 
                                         <?php
+                                        
 if($cuartomes==1){
     $codigo9 = "SELECT id_tipoexcepcion, COUNT(*) as valor FROM solicitud where MONTH(fecha_solicitud)=$tercermes and year(fecha_solicitud)='$anio' group by id_tipoexcepcion";
 
@@ -586,7 +586,7 @@ if($rest9['id_tipoexcepcion']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
@@ -647,7 +647,7 @@ if($rest['id_tiposolicitud']=='1'){
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                <div class=" md:w-1/2 xl:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">

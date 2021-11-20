@@ -46,7 +46,7 @@ $var= session('imprimir1');
        </strong>
 
        <div style="margin-left:25px ">
-       <img src="https://pagos.cotel.bo/assets/admin/img/login.png" width="120" style="margin: 0px 0px 0px 500px; " >
+       <img src="{{url('../img/login.png')}}"  width="120" style="margin: 0px 0px 0px 500px; " >
       <br>
             <strong><label style="font-family: Arial; font-size: 10pt;">FECHA DE SOLICITUD:</strong>
                 <input style="border: none;background:white; margin-left: 8px ; font-family: Arial; font-size: 10pt; " type="text" value="<?php echo $rest ['fecha_solicitud']; ?>" >
